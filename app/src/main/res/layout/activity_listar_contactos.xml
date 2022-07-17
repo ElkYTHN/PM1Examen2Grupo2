@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#009688"
     tools:context=".ListarContactos">
 
     <LinearLayout
@@ -21,7 +22,9 @@
                 android:layout_width="2dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Atras" />
+                android:backgroundTint="#009688"
+                android:text="Atras"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
             <EditText
                 android:id="@+id/alctxtbuscar"
@@ -62,14 +65,18 @@
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Eliminar" />
+                android:backgroundTint="#009688"
+                android:text="Eliminar"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
             <Button
                 android:id="@+id/alcbtnActualizar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Actualizar" />
+                android:backgroundTint="#009688"
+                android:text="Actualizar"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
             <Button
                 android:id="@+id/btnUbicacion"
@@ -77,7 +84,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:text="Ubicacion" />
+                android:backgroundTint="#009688"
+                android:text="Ubicacion"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         </LinearLayout>
 
