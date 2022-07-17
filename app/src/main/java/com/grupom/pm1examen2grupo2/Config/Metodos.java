@@ -15,5 +15,6 @@ public class Metodos {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
         byte[] ArrayFirma  = stream.toByteArray();
         return ArrayFirma;
+
     }
 }
