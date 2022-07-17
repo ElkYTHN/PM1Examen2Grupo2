@@ -121,6 +121,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //***Metodo para convertir imagen***//
+    private String GetStringImage(Bitmap photo) {
+
+        try {
+            ByteArrayOutputStream ba = new ByteArrayOutputStream();
+            photo.compress(Bitmap.CompressFormat.JPEG, 70, ba);
+            byte[] imagebyte = ba.toByteArray();
+            String encode = Base64.encodeToString(imagebyte, Base64.DEFAULT);
+
+            return encode;
+        }catch (Exception ex)
+        {
+            ex.toString();
+        }
+        return "";
+    }
+
 
 
 
