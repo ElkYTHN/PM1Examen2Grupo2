@@ -68,7 +68,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyB3lMdryKlSmA80DSLSy6hIKnRq7Z0RyXs" />
+            android:value="AIzaSyCaCgj84fV1j4uLD7kefOg63yNz-QZiaT0" />
 
         <activity
             android:name=".ListarContactos"
@@ -77,6 +77,7 @@
             android:name=".MapsActivity"
             android:exported="true"
             android:label="@string/title_activity_maps"></activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
