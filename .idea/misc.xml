@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/elkin/AndroidStudioProjects/PM1Examen2Grupo2/app/src/main/res/drawable/mood.xml" value="0.236" />
         <entry key="..\:/Users/elkin/AndroidStudioProjects/PM1Examen2Grupo2/app/src/main/res/layout/activity_actualizar_contactos.xml" value="0.30833333333333335" />
         <entry key="..\:/Users/elkin/AndroidStudioProjects/PM1Examen2Grupo2/app/src/main/res/layout/activity_listar_contactos.xml" value="0.30833333333333335" />
         <entry key="..\:/Users/elkin/AndroidStudioProjects/PM1Examen2Grupo2/app/src/main/res/layout/activity_main.xml" value="0.30833333333333335" />
         <entry key="..\:/Users/elkin/AndroidStudioProjects/PM1Examen2Grupo2/app/src/main/res/layout/activity_maps.xml" value="0.30833333333333335" />
+        <entry key="..\:/Users/elkin/AndroidStudioProjects/PM1Examen2Grupo2/app/src/main/res/layout/single_row.xml" value="0.30833333333333335" />
       </map>
     </option>
   </component>
