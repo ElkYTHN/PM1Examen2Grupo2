@@ -1,13 +1,9 @@
 package com.grupom.pm1examen2grupo2;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,7 +14,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -27,7 +22,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -36,9 +30,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import com.grupom.pm1examen2grupo2.Config.RestApiMethods;
 
@@ -52,7 +44,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -128,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 /*
-    private String GetStringImage() {
+  private Object Firma (){
         try {
             captureBitmapView.getBitmap();
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -144,16 +135,17 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Error a guardar Datos ",Toast.LENGTH_LONG).show();
         }
 
-
-    }
+      return null;
+  }
 */
 
-    //**Metodo para convertir imagen
-    private String GetStringImage(Bitmap captureBitmapView) {
+
+    private String GetStringImage() {
 
         try {
+            Bitmap signature = captureBitmapView.getBitmap();
             ByteArrayOutputStream ba = new ByteArrayOutputStream();
-            captureBitmapView.compress(Bitmap.CompressFormat.JPEG, 70, ba);
+            signature.compress(Bitmap.CompressFormat.JPEG, 70, ba);
             byte[] arrayFoto = ba.toByteArray();
             String encode = Base64.encodeToString(arrayFoto, Base64.DEFAULT);
 
@@ -165,21 +157,20 @@ public class MainActivity extends AppCompatActivity {
         return "";
     }
 
-
     private void crearUsuario() {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         HashMap<String, String> parametros = new HashMap<>();
 
 
-        //String firmaString = GetStringImage(imagen);
+        String firmaString = GetStringImage();
 
         //setear los parametros mediante put
         parametros.put("nombre", txtNombre.getText().toString());
         parametros.put("telefono", txtTelefono.getText().toString());
         parametros.put("latitud", txtLat.getText().toString());
         parametros.put("longitud", txtLon.getText().toString());
-        //parametros.put("foto", firmaString);
-        parametros.put("firma", String.valueOf(captureBitmapView));
+        parametros.put("foto", firmaString);
+        //parametros.put("firma", String.valueOf(Firma()));
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RestApiMethods.EndPointCreateUsuario,
                 new JSONObject(parametros), new Response.Listener<JSONObject>() {
