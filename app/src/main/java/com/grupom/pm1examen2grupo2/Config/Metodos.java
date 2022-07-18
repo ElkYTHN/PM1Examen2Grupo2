@@ -13,8 +13,8 @@ public class Metodos {
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] ArrayFirma  = stream.toByteArray();
-        return ArrayFirma;
+        byte[] ArrayFoto  = stream.toByteArray();
+        return ArrayFoto;
 
     }
 }
