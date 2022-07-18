@@ -2,7 +2,7 @@ package com.grupom.pm1examen2grupo2.Config;
 
 public class RestApiMethods {
     private static final String ipaddress = "transportweb2.online";
-    public static final String StringHttp = "http://";
+    public static final String StringHttp = "https://";
     //EndPoint Urls
     private static final String GetEmple = "/APIExamen/listacontactos.php";
     private static final String GetBuscar = "/APIExamen/listasinglecontacto.php?nombre=";
