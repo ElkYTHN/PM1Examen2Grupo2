@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -70,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,}, 1000);
         } else {
         }
+
+        btnSave = (Button) findViewById(R.id.btnGuardar);
+        btnListarContactos = (Button) findViewById(R.id.btnContactos);
         txtNombre = (EditText) findViewById(R.id.txtNombre);
         txtTelefono = (EditText) findViewById(R.id.txtTelefono);
         txtLat = (EditText) findViewById(R.id.txtLat);
@@ -105,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
             locationStart();
         }
     }
+
     private void validarDatos() {
         if(txtNombre.getText().toString().equals("")) {
             Toast.makeText(getApplicationContext(), "Debe de escribir un nombre" ,Toast.LENGTH_LONG).show();
@@ -121,14 +126,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     //***Metodo para convertir imagen***//
-    private String GetStringImage(Bitmap photo) {
+    private String GetStringImage(Bitmap bitmap) {
 
         try {
             ByteArrayOutputStream ba = new ByteArrayOutputStream();
-            photo.compress(Bitmap.CompressFormat.JPEG, 70, ba);
-            byte[] imagebyte = ba.toByteArray();
-            String encode = Base64.encodeToString(imagebyte, Base64.DEFAULT);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, ba);
+            byte[] arrayFoto = ba.toByteArray();
+            String encode = Base64.encodeToString(arrayFoto, Base64.DEFAULT);
 
             return encode;
         }catch (Exception ex)
@@ -139,19 +145,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-
-
-
     private void crearUsuario() {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         HashMap<String, String> parametros = new HashMap<>();
 
-        String firmaString = GetStringImage(imagen);
-
+        String firmaString = GetStringImage(captureBitmapView);
 
         //setear los parametros mediante put
         parametros.put("nombre", txtNombre.getText().toString());
@@ -188,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
         txtTelefono.setText("");
         txtLon.setText("");
         txtLat.setText("");
+        captureBitmapView.ClearCanvas();
     }
 
     //Metodo latitud y longitud//

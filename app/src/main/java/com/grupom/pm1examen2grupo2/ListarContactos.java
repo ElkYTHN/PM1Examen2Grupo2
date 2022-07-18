@@ -62,7 +62,7 @@ public class ListarContactos extends AppCompatActivity {
         setContentView(R.layout.activity_listar_contactos);
 
         listUsuario = (ListView) findViewById(R.id.listaContacto);
-        intent = new Intent(getApplicationContext(),ActivityListarContactos.class);//para obtener el contacto seleccionado mas adelante
+        intent = new Intent(getApplicationContext(),ListarContactos.class);//para obtener el contacto seleccionado mas adelante
 
 
         usuarioList = new ArrayList<>();
@@ -81,8 +81,6 @@ public class ListarContactos extends AppCompatActivity {
         buscar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-
 
             }
 
@@ -109,13 +107,13 @@ public class ListarContactos extends AppCompatActivity {
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),ActivityActualizarUsuario.class);
+                Intent intent = new Intent(getApplicationContext(),ActualizarContactos.class);
                 intent.putExtra("id", usuario.getId()+"");
                 intent.putExtra("nombre", usuario.getNombre()+"");
                 intent.putExtra("telefono", usuario.getTelefono()+"");
                 intent.putExtra("latitud", usuario.getLatitud()+"");
                 intent.putExtra("longitud", usuario.getLongitud()+"");
-                intent.putExtra("foto", usuario.getFoto()+"").toString();
+                intent.putExtra("firma", usuario.getFirma()+"").toString();
                 startActivity(intent);
 
             }
@@ -124,7 +122,7 @@ public class ListarContactos extends AppCompatActivity {
         btnAtras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),ActivityUsuario.class);
+                Intent intent = new Intent(getApplicationContext(),Usuario.class);
                 startActivity(intent);
             }
         });
@@ -358,7 +356,7 @@ public class ListarContactos extends AppCompatActivity {
         intent.putExtra("telefono", usuario.getTelefono()+"");
         intent.putExtra("latitud", usuario.getLatitud());
         intent.putExtra("longitud", usuario.getLongitud());
-        intent.putExtra("foto2", usuario.getFoto()+"").toString();
+        intent.putExtra("foto2", usuario.getFirma()+"").toString();
 
         //startActivity(intent);
     }
