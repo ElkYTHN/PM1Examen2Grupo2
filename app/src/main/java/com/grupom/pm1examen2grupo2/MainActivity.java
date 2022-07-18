@@ -47,6 +47,8 @@ import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -125,14 +127,33 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+/*
+    private String GetStringImage() {
+        try {
+            captureBitmapView.getBitmap();
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String imageFileName = "JPEG_" + timeStamp + "_";
+            MediaStore.Images.Media.insertImage(getContentResolver(), imagen, imageFileName , "yourDescription");
+
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK |Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+            limpiar();
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(), "Error a guardar Datos ",Toast.LENGTH_LONG).show();
+        }
 
 
-    //***Metodo para convertir imagen***//
-    private String GetStringImage(Bitmap bitmap) {
+    }
+*/
+
+    //**Metodo para convertir imagen
+    private String GetStringImage(Bitmap captureBitmapView) {
 
         try {
             ByteArrayOutputStream ba = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, ba);
+            captureBitmapView.compress(Bitmap.CompressFormat.JPEG, 70, ba);
             byte[] arrayFoto = ba.toByteArray();
             String encode = Base64.encodeToString(arrayFoto, Base64.DEFAULT);
 
@@ -149,14 +170,16 @@ public class MainActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         HashMap<String, String> parametros = new HashMap<>();
 
-        String firmaString = GetStringImage(captureBitmapView);
+
+        //String firmaString = GetStringImage(imagen);
 
         //setear los parametros mediante put
         parametros.put("nombre", txtNombre.getText().toString());
         parametros.put("telefono", txtTelefono.getText().toString());
         parametros.put("latitud", txtLat.getText().toString());
         parametros.put("longitud", txtLon.getText().toString());
-        parametros.put("firma", firmaString);
+        //parametros.put("foto", firmaString);
+        parametros.put("firma", String.valueOf(captureBitmapView));
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RestApiMethods.EndPointCreateUsuario,
                 new JSONObject(parametros), new Response.Listener<JSONObject>() {
