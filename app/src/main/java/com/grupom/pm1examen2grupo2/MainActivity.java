@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 /*
   private Object Firma (){
         try {
-            captureBitmapView.getBitmap();
+            Sing(captureBitmapView.getBitmap());
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
             String imageFileName = "JPEG_" + timeStamp + "_";
             MediaStore.Images.Media.insertImage(getContentResolver(), imagen, imageFileName , "yourDescription");
@@ -134,18 +134,20 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             Toast.makeText(getApplicationContext(), "Error a guardar Datos ",Toast.LENGTH_LONG).show();
         }
-
       return null;
   }
 */
 
-
-    private String GetStringImage() {
+    private String Sing() {
 
         try {
-            Bitmap signature = captureBitmapView.getBitmap();
+            Bitmap sign = captureBitmapView.getBitmap();
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+            String imageFileName = "JPEG_" + timeStamp + "_";
+            MediaStore.Images.Media.insertImage(getContentResolver(), imagen, imageFileName , "yourDescription");
+
             ByteArrayOutputStream ba = new ByteArrayOutputStream();
-            signature.compress(Bitmap.CompressFormat.JPEG, 70, ba);
+            sign.compress(Bitmap.CompressFormat.JPEG, 70, ba);
             byte[] arrayFoto = ba.toByteArray();
             String encode = Base64.encodeToString(arrayFoto, Base64.DEFAULT);
 
@@ -157,20 +159,21 @@ public class MainActivity extends AppCompatActivity {
         return "";
     }
 
+
+
     private void crearUsuario() {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         HashMap<String, String> parametros = new HashMap<>();
 
-
-        String firmaString = GetStringImage();
+        //String firmaString = GetStringImage();
 
         //setear los parametros mediante put
         parametros.put("nombre", txtNombre.getText().toString());
         parametros.put("telefono", txtTelefono.getText().toString());
         parametros.put("latitud", txtLat.getText().toString());
         parametros.put("longitud", txtLon.getText().toString());
-        parametros.put("foto", firmaString);
-        //parametros.put("firma", String.valueOf(Firma()));
+        //parametros.put("foto", firmaString);
+        parametros.put("firma", String.valueOf(Sing()));
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, RestApiMethods.EndPointCreateUsuario,
                 new JSONObject(parametros), new Response.Listener<JSONObject>() {

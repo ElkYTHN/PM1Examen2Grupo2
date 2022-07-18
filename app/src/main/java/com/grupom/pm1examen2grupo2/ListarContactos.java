@@ -254,7 +254,7 @@ public class ListarContactos extends AppCompatActivity {
                                         RowUsuario.getInt("telefono"),
                                         RowUsuario.getString("latitud"),
                                         RowUsuario.getString("longitud"),
-                                        RowUsuario.getString("foto")
+                                        RowUsuario.getString("firma")
                                 );
 
                                 usuarioList.add(usuario);
@@ -279,7 +279,7 @@ public class ListarContactos extends AppCompatActivity {
 
     private void BuscarUsuario(String dato) {
         RequestQueue queue = Volley.newRequestQueue(this);
-        //String url = "http://transportweb2.online/APIexam/listasinglecontacto.php?nombre=";
+        //String url = "https://transportweb2.online/APIExamen/listasinglecontacto.php?nombre=";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, RestApiMethods.EndPointGetBuscarContact+dato,
                 new Response.Listener<String>() {
                     @Override
@@ -302,7 +302,7 @@ public class ListarContactos extends AppCompatActivity {
                                         RowUsuario.getInt("telefono"),
                                         RowUsuario.getString("latitud"),
                                         RowUsuario.getString("longitud"),
-                                        RowUsuario.getString("foto")
+                                        RowUsuario.getString("firma")
                                 );
                                 usuarioList.add(usuario);
                                 arrayUsuario.add(usuario.getNombre()+' '+usuario.getTelefono());
@@ -326,7 +326,7 @@ public class ListarContactos extends AppCompatActivity {
 
     private void eliminarUsuario(String dato) {
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://transportweb2.online/APIexam/eliminarcontacto.php?id=";
+        String url = "https://transportweb2.online/APIExamen/eliminarcontacto.php?id=";
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url+dato,
                 new Response.Listener<String>() {
                     @Override
@@ -345,8 +345,6 @@ public class ListarContactos extends AppCompatActivity {
 
 
 
-
-
     private void setUsuarioSeleccionado() {
 
         //contacto = listaContactos.get(id);
@@ -356,7 +354,7 @@ public class ListarContactos extends AppCompatActivity {
         intent.putExtra("telefono", usuario.getTelefono()+"");
         intent.putExtra("latitud", usuario.getLatitud());
         intent.putExtra("longitud", usuario.getLongitud());
-        intent.putExtra("foto2", usuario.getFirma()+"").toString();
+        intent.putExtra("firma2", usuario.getFirma()+"").toString();
 
         //startActivity(intent);
     }
