@@ -1,13 +1,13 @@
 package com.grupom.pm1examen2grupo2.Config;
 
 public class RestApiMethods {
-    private static final String ipaddress = "elkinwebhn.com";
-    public static final String StringHttp = "https://";
+    private static final String ipaddress = "transportweb2.online";
+    public static final String StringHttp = "http://";
     //EndPoint Urls
-    private static final String GetEmple = "/API_Examen/listacontactos.php";
-    private static final String GetBuscar = "/API_Examen/listasinglecontacto.php?nombre=";
-    private static final String setUpdate = "/API_Examen/actualizarcontacto.php";
-    private static final String CreateUsuario = "/API_Examen/crearcontacto.php";
+    private static final String GetEmple = "/APIExamen/listacontactos.php";
+    private static final String GetBuscar = "/APIExamen/listasinglecontacto.php?nombre=";
+    private static final String setUpdate = "/APIExamen/actualizarcontacto.php";
+    private static final String CreateUsuario = "/APIExamen/crearcontacto.php";
 
     //metodo get
     public static final String EndPointGetContact = StringHttp + ipaddress + GetEmple;
